@@ -1,0 +1,14 @@
+1.start fabric network:
+cd ~/go/src/github.com/hyperledger/fabric/examples/e2e_cli/
+./network_setup.sh up
+
+2.query account leaft money(Example02):
+docker exec -it cli bash
+peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
+
+3.transfer 20 dollor from a to b:
+peer chaincode invoke -o orderer.example.com:7050  --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem  -C mychannel -n mycc -c '{"Args":["invoke","a","b","20"]}'
+
+
+ 
+
